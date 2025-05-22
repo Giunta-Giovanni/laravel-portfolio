@@ -12,7 +12,7 @@ class DashboardController extends Controller
     {
         $user = Auth::user();
 
-        return Auth::check();
+        return 'questa è la rotta index della dashboard';
     }
     public function profile()
     {
