@@ -26,7 +26,6 @@ class ProjectSeeder extends Seeder
             $newProject->start_date = $faker->date();
             $newProject->end_date = $faker->date();
             $newProject->state = 'completed';
-
             $newProject->description = $faker->realText($maxNbChars = 200, $indexSize = 2);
 
 
