@@ -1,12 +1,13 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProjectsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::get('/dashboard', function () {
@@ -29,4 +30,9 @@ Route::middleware(['auth', 'verified'])
         Route::get("/profile", [DashboardController::class, 'profile'])
             ->name("profile");
     });
+
+// rotta dei progetti in administration
+Route::resource('projects', ProjectsController::class)
+    ->middleware(['auth', 'verified']);
+
 require __DIR__ . '/auth.php';
