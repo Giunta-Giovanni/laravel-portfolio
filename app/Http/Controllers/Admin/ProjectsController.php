@@ -38,9 +38,11 @@ class ProjectsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Project $project)
     {
-        //
+        //prendiamo il progetto con quello specifico id dal Db
+        // $project = Project::find($id);
+        dd($project);
     }
 
     /**
