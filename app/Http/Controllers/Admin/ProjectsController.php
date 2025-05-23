@@ -16,7 +16,7 @@ class ProjectsController extends Controller
     {
         // ricaviamoci tutti i progetti dal modulo Project
         $projects = Project::all();
-        return view('projects', compact('projects'));
+        return view('projects.index', compact('projects'));
     }
 
     /**
@@ -42,7 +42,8 @@ class ProjectsController extends Controller
     {
         //prendiamo il progetto con quello specifico id dal Db
         // $project = Project::find($id);
-        dd($project);
+        // dd($project);
+        return view('projects.show', compact('project'));
     }
 
     /**
