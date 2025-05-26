@@ -14,7 +14,7 @@ $allUri = [];
 @endphp
 
 
-@extends('layouts.app')
+@extends('layouts.projects')
 
 @section('content')
 <div class="container py-5 d-flex justify-content-center">
