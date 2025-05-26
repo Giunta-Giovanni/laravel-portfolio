@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('client', 100)->nullable();              // nome del cliente
             $table->date('start_date');                             // data di inizio
             $table->date('end_date')->nullable();                   // data di fine
-            $table->enum('state', ['completed', 'in progress']);    // stato del progetto
+            $table->enum('state', ['completed', 'in_progress']);    // stato del progetto
             $table->text('description');                    // descrizione progetto
 
             // $table->string('slug', 120)->unique();           // breve presentazione progetto
