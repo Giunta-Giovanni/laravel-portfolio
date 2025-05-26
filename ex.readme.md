@@ -23,3 +23,16 @@ __MILESTONE__
 - Creiamo una rotta show e mostriamo la singola card a schermo.√
 
 - Creiamo le rotte per i nostri progetti e prepariamo un layout per mostrare i  nostri progetti in tabella nella rotta index.√ Inventiamo anche uno stile per la pagina di show, che dovrà mostrare un singolo progetto. √
+
+# Milestone 3
+
+Procediamo al completamento delle operazioni CRUD sul modello Project:
+
+1. Prepariamo le rotte per le pagine di creazione e modifica dei progetti√
+2. All'interno delle pagine, prepariamo i rispettivi form√
+3. Nella pagina di dettaglio del progetto, mostriamo il Type a cui il progetto appartiene. Volendo, potremmo anche aggiungere una colonna che indica il tipo nella tabella della pagina Index dei progetti.√
+4. Nel controller, inseriamo la logica per il salvataggio di un nuovo progetto, per la sua modifica e per l'eliminazione√
+5. Nella tabella della pagina index, dovremo inserire i pulsanti su ciascuna riga, per permettere l'eliminazione e la modifica del singolo progetto. Inoltre, potremmo avere un singolo tasto in cima che ci porti alla pagina di creazione del progetto.
+
+- Bonus
+Proviamo ad aggiungere un controllo: quando l'utente clicca sul pulsante "delete", chiediamo conferma della cancellazione, prima di eliminare l'elemento. Questa operazione possiamo farla a mano con JavaScript o aiutarci con i componenti Bootstrap.√
