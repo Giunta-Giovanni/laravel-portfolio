@@ -22,6 +22,10 @@ class DatabaseSeeder extends Seeder
 
 
         // codice che esegua il nostro seeder
-        $this->call(ProjectSeeder::class);
+        $this->call([
+            TypesSeeder::class,
+            ProjectsSeeder::class,
+        ]);
+
     }
 }
