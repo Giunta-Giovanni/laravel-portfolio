@@ -28,6 +28,10 @@
         <h3 class="mb-3">Descrizione progetto</h3>
         <p class="text-muted">{{ $project->description }}</p>
 
+        <p class="text-muted">Linguaggio: {{ $project->type->name }}</p>
+
+
+
         <div class="d-flex py-4">
             {{-- pulsante modifica --}}
             <a href="{{route('projects.edit', $project)}}" class="btn btn-warning">Modifica</a>

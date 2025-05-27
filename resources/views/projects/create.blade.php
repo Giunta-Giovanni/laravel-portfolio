@@ -40,6 +40,18 @@
             <option value="in_progress">In Corso</option>
         </select>
     </div>
+    @dump($types)
+    
+
+    {{-- tipo di linguaggio --}}
+    <div class="mb-3">
+        <label for="type" class="form-label">Linguaggio utilizzato</label>
+        <select id="type" name="type" class="form-select">
+            @foreach ($types as $type)
+                <option value={{$type->id}}>{{$type->name}}</option>
+            @endforeach
+        </select>
+    </div>
 
     {{-- descrizione --}}
     <div class="mb-3">

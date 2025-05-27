@@ -36,3 +36,13 @@ Procediamo al completamento delle operazioni CRUD sul modello Project:
 
 - Bonus
 Proviamo ad aggiungere un controllo: quando l'utente clicca sul pulsante "delete", chiediamo conferma della cancellazione, prima di eliminare l'elemento. Questa operazione possiamo farla a mano con JavaScript o aiutarci con i componenti Bootstrap.√
+
+# Milestone 4
+1. Creiamo il modello Type, con relativa migrazione ed un seeder per inserire i types nel Database;√
+2. Creiamo anche la migration per modificare la tabella projects, che dovrà ora contenere la chiave esterna type_id;√
+3. Nei modelli Type e Project, aggiungiamo i metodi per definire la relazione one-to-many;√
+4. Nella pagina di dettaglio del progetto, mostriamo il Type a cui il progetto appartiene. Volendo, potremmo anche aggiungere una colonna che indica il tipo nella tabella della pagina Index dei progetti;√
+5. Nei form di creazione e modifica dei progetti, dobbiamo permettere di associare un type al progetto stesso. Gestiamo inoltre il salvataggio di questa associazione progetto-tipologia nel controller ProjectController;
+
+- Bonus
+Aggiungere le operazioni CRUD anche per il model Type, in modo da gestire le tipologie di progetto direttamente dal pannello di amministrazione.
