@@ -44,16 +44,15 @@
         </select>
     </div>
 
-        {{-- tipo di linguaggio --}}
+        {{-- tipo di progetto --}}
     <div class="mb-3">
-        <label for="type" class="form-label">Linguaggio utilizzato</label>
+        <label for="type" class="form-label">Tipo di progetto</label>
         <select id="type" name="type" class="form-select">
             @foreach ($types as $type)
                 <option value={{$type->id}} {{$project->type_id == $type->id? 'selected' : ''}}>{{$type->name}}</option>
             @endforeach
         </select>
     </div>
-@dump($types)
     {{-- descrizione --}}
     <div class="mb-3">
         <label for="description" class="form-label">Descrizione</label>

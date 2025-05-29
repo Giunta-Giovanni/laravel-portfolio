@@ -7,6 +7,8 @@
     <div class="card shadow-sm p-4 mb-4 ">
         
         <h1 class="mb-3 text-primary">{{ $project->title }}</h1>
+        <p class="text-muted">tipo di progetto: {{ $project->type->name }}</p>
+
         <span><a href={{route("projects.index")}}>torna indietro</a></span>
 
         <div class="mb-3 ">
@@ -28,7 +30,6 @@
         <h3 class="mb-3">Descrizione progetto</h3>
         <p class="text-muted">{{ $project->description }}</p>
 
-        <p class="text-muted">Linguaggio: {{ $project->type->name }}</p>
 
 
 

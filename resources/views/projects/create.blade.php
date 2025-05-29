@@ -43,9 +43,9 @@
     @dump($types)
     
 
-    {{-- tipo di linguaggio --}}
+    {{-- tipo di progetto --}}
     <div class="mb-3">
-        <label for="type" class="form-label">Linguaggio utilizzato</label>
+        <label for="type" class="form-label">Progetto utilizzato</label>
         <select id="type" name="type" class="form-select">
             @foreach ($types as $type)
                 <option value={{$type->id}}>{{$type->name}}</option>
