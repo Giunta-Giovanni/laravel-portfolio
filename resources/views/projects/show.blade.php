@@ -8,6 +8,16 @@
         
         <h1 class="mb-3 text-primary">{{ $project->title }}</h1>
         <p class="text-muted">tipo di progetto: {{ $project->type->name }}</p>
+        <p>
+            Tecnologie utilizzate: 
+            @forelse ($project->technologies as $technology)
+            <span class="badge bg-primary mx-2">
+                 {{$technology->name}}
+            </span>
+            @empty
+            nessuna
+            @endforelse
+        </p>
 
         <span><a href={{route("projects.index")}}>torna indietro</a></span>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
 
@@ -26,8 +27,9 @@ class ProjectsController extends Controller
     public function create()
     {
         $types = Type::all();
+        $technologies = Technology::all();
         // dump($types);
-        return view('projects.create', compact('types'));
+        return view('projects.create', compact('types', 'technologies'));
     }
 
     /**
@@ -39,7 +41,7 @@ class ProjectsController extends Controller
 
         $data = $request->all();
 
-        // dd($data);
+        // dd($data['technologies']);
 
         $newProject = new Project();
 
@@ -56,6 +58,10 @@ class ProjectsController extends Controller
         // dd($newProject);
         $newProject->save();
 
+
+        //dopo aver salvato i post 
+        $newProject->technologies()->attach($data['technologies']);
+
         return redirect()->route('projects.show', $newProject);
     }
 
@@ -66,7 +72,7 @@ class ProjectsController extends Controller
     {
         //prendiamo il progetto con quello specifico id dal Db
         // $project = Project::find($id);
-        // dump($project->type);
+        dump($project->technologies);
         return view('projects.show', compact('project'));
     }
 
@@ -77,7 +83,9 @@ class ProjectsController extends Controller
     {
         // dd($project);
         $types = Type::all();
-        return view('projects.edit', compact('project', 'types'));
+        $technologies = Technology::all();
+
+        return view('projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -101,6 +109,8 @@ class ProjectsController extends Controller
         // dump($project);
 
         $project->update();
+
+        $project->technologies()->sync($data['technologies']);
 
         return redirect()->route('projects.show', $project);
     }

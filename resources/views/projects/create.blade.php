@@ -45,13 +45,39 @@
 
     {{-- tipo di progetto --}}
     <div class="mb-3">
-        <label for="type" class="form-label">Progetto utilizzato</label>
+        <label for="type" class="form-label">Tipo di Progetto</label>
         <select id="type" name="type" class="form-select">
             @foreach ($types as $type)
                 <option value={{$type->id}}>{{$type->name}}</option>
             @endforeach
         </select>
     </div>
+
+    {{-- tecnologie usate --}}
+   {{-- tecnologie usate --}}
+<div class="mb-3 form-control">
+    <div class="row">
+        @foreach ($technologies as $technology)
+            <div class="col-md-3">
+                <div class="form-check mb-2">
+                    <input 
+                        type="checkbox" 
+                        name="technologies[]" 
+                        value="{{ $technology->id }}" 
+                        id="technology-{{ $technology->id }}" 
+                        class="form-check-input"
+                    >
+                    <label 
+                        for="technology-{{ $technology->id }}" 
+                        class="form-check-label"
+                    >
+                        {{ $technology->name }}
+                    </label>
+                </div>
+            </div>
+        @endforeach
+    </div>
+</div>
 
     {{-- descrizione --}}
     <div class="mb-3">
