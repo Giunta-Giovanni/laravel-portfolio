@@ -58,9 +58,15 @@ class ProjectsController extends Controller
         // dd($newProject);
         $newProject->save();
 
-
+        // dobbiamo controllare se la nostra richiesta ha la chiave technologies
+        if ($request->has('technologies')) {
+            // aggiungiamo le technologies della tabella pivot
+            $newProject->technologies()->attach($data['technologies']);
+        } else {
+            // se non riceviamo i tags eliminiamoli 
+            $newProject->technologies()->detach();
+        }
         //dopo aver salvato i post 
-        $newProject->technologies()->attach($data['technologies']);
 
         return redirect()->route('projects.show', $newProject);
     }
@@ -110,7 +116,16 @@ class ProjectsController extends Controller
 
         $project->update();
 
-        $project->technologies()->sync($data['technologies']);
+        // dobbiamo controllare se la nostra richiesta ha la chiave technologies
+        if ($request->has('technologies')) {
+            // sincronizziamo le technologies della tabella pivot
+            $project->technologies()->sync($data['technologies']);
+        } else {
+            // se non riceviamo i tags eliminiamoli 
+            $project->technologies()->detach();
+        }
+
+
 
         return redirect()->route('projects.show', $project);
     }
@@ -120,6 +135,8 @@ class ProjectsController extends Controller
      */
     public function destroy(Project $project)
     {
+
+        $project->technologies()->detach();
         // dump($project);
         $project->delete();
 
