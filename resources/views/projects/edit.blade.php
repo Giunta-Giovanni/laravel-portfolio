@@ -70,7 +70,6 @@
                         {{$project->technologies->contains($technology->id)?'checked':''}}
                         id="technology-{{ $technology->id }}" 
                         class="form-check-input"
-
                     >
 
                     <label 

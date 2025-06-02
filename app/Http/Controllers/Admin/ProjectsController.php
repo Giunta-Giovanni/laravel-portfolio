@@ -54,7 +54,6 @@ class ProjectsController extends Controller
         $newProject->type_id = $data['type'];
 
 
-
         // dd($newProject);
         $newProject->save();
 

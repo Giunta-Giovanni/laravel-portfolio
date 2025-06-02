@@ -42,7 +42,32 @@ Proviamo ad aggiungere un controllo: quando l'utente clicca sul pulsante "delete
 2. Creiamo anche la migration per modificare la tabella projects, che dovrà ora contenere la chiave esterna type_id;√
 3. Nei modelli Type e Project, aggiungiamo i metodi per definire la relazione one-to-many;√
 4. Nella pagina di dettaglio del progetto, mostriamo il Type a cui il progetto appartiene. Volendo, potremmo anche aggiungere una colonna che indica il tipo nella tabella della pagina Index dei progetti;√
-5. Nei form di creazione e modifica dei progetti, dobbiamo permettere di associare un type al progetto stesso. Gestiamo inoltre il salvataggio di questa associazione progetto-tipologia nel controller ProjectController;
+5. Nei form di creazione e modifica dei progetti, dobbiamo permettere di associare un type al progetto stesso. Gestiamo inoltre il salvataggio di questa associazione progetto-tipologia nel controller ProjectController;√
 
 - Bonus
 Aggiungere le operazioni CRUD anche per il model Type, in modo da gestire le tipologie di progetto direttamente dal pannello di amministrazione.
+
+# Milestone 5
+1. Creiamo il modello Technology, la migration per la sua tabella ed un seeder.√
+2. Sarà inoltre necessario creare la tabella pivot project_technology, per gestire la relazione molti a molti√
+3. Nei modelli Technology e Project, dovremo aggiungere i metodi corretti per rappresentare la relazione molti a molti√
+4. Nei form di creazione e modifica dei progetti, dobbiamo permettere di associare una o più tecnologie al progetto stesso. Gestiamo inoltre il salvataggio di queste associazioni progetto-tecnologie nel controller ProjectController√
+5. All'interno della pagina di dettaglio di un modello, dovremo visualizzare in qualche modo la lista delle tecnologie utilizzate nel singolo progetto.√
+
+# Bonus
+
+    Aggiungere le operazioni CRUD anche per il modello Technology, in modo da gestire le tipologie di progetto direttamente dal pannello di amministrazione.
+
+    Potremmo modificare i seeder in modo tale da creare già le associazioni tra tecnologia e progetti quando viene popoliamo il database.
+
+# Milestone 6
+1. Innanzitutto, pubblichiamo il file routes/api.php col comando php artisan route:publish api
+2. Creiamo poi un controller dedicato alle API dei progetti, col comando php artisan make:controller Api/ProjectController e inseriamo all'interno i metodi per restituire l'elenco dei progetti ed un singolo progetto, in formato JSON
+3. Testiamo su Postman le nostre due rotte per verificare che restituiscano correttamente i JSON che abbiamo predisposto
+4. Predisponiamo le configurazioni CORS di Laravel nel file cors.php per autorizzare l'applicazione esterna ad effettuare delle chiamate al nostro backend. 
+
+# Bonus
+Nome repo: laravel-portfolio-bonus
+Prepariamo (in un repo a parte) una piccola applicazione frontend con React, che  permetta ad un utente non loggato di vedere la lista dei nostri progetti in Home e di poter poi andare a visualizzare il singolo progetto in una pagina di dettaglio, sfruttando le  API prodotte in Laravel!
+
+Non dimentichiamo di predisporre le configurazioni CORS di Laravel nel file cors.php per autorizzare l'applicazione esterna ad effettuare delle chiamate al nostro backend!

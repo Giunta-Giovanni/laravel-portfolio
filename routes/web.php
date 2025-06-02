@@ -3,28 +3,13 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProjectsController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Auth\Events\Verified;
+// use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 
     // mi salvo le rotte in una variabile per mostrarle a schermo in fase di progettazione
     $routes = collect(Route::getRoutes());
-    // ->map(function ($route) {
-    //     $methods = implode(', ', $route->methods());
-    //     if ($methods === "GET, HEAD") {
-    //         return [
-    //             'uri' => $route->uri()
-    //         ]
-    //     else{
-    //         unset($route)
-    //     }
-    //     }
-
-    // 'name' => $route->getName(),
-    // 'methods' => implode(', ', $route->methods()),
-    // 'action' => $route->getActionName(),
-    // });
     return view('home', compact('routes'));
 });
 
