@@ -1,5 +1,5 @@
 @extends('layouts.projects')
-
+@section('title', "My projects")
 @section('content')
     <div class="container pt-5">
         <div>

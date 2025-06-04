@@ -7,7 +7,7 @@ use App\Models\Project;
 use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
 
 class ProjectsController extends Controller
 {
@@ -37,9 +37,13 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
 
         $data = $request->all();
+        $image = $data['image'];
+
+
+
+        // dd($image);
 
         // dd($data['technologies']);
 
@@ -53,6 +57,13 @@ class ProjectsController extends Controller
         $newProject->description = $data['description'];
         $newProject->type_id = $data['type'];
 
+        // controlliamo se il'immagine e stata caricata
+        if (array_key_exists('image', $data)) {
+            $img_path = Storage::putFile('uploads', $image);
+
+            // salviamo il file immagine
+            $newProject->image = $img_path;
+        }
 
         // dd($newProject);
         $newProject->save();
@@ -67,6 +78,9 @@ class ProjectsController extends Controller
         }
         //dopo aver salvato i post 
 
+
+
+
         return redirect()->route('projects.show', $newProject);
     }
 
@@ -77,7 +91,7 @@ class ProjectsController extends Controller
     {
         //prendiamo il progetto con quello specifico id dal Db
         // $project = Project::find($id);
-        dump($project->technologies);
+        // dump($project->technologies);
         return view('projects.show', compact('project'));
     }
 
@@ -102,6 +116,7 @@ class ProjectsController extends Controller
         // return 'sei nella update';
         $data = $request->all();
 
+        // dd(array_key_exists('image', $data));
         // dd($data);
         $project->title = $data['title'];
         $project->client = $data['client'];
@@ -110,6 +125,20 @@ class ProjectsController extends Controller
         $project->state = $data['state'];
         $project->description = $data['description'];
         $project->type_id = $data['type'];
+
+        if (array_key_exists('image', $data)) {
+
+            if ($project->image) {
+                //eliminare l'immagine precedente
+                Storage::delete($project->image);
+            }
+
+            //caricare una nuova immagine
+            $img_path = Storage::putFile('uploads', $data['image']);
+
+            //aggiornare il db
+            $project->image = $img_path;
+        }
 
         // dump($project);
 
@@ -137,6 +166,14 @@ class ProjectsController extends Controller
 
         $project->technologies()->detach();
         // dump($project);
+        //se la tabella ha l'immagine collegata, la eliminiamo
+
+        if ($project->image) {
+            //dd("L'immagine è presente")
+            Storage::delete($project->image);
+        }
+        //dd("L'immagine non è presente")
+
         $project->delete();
 
         // facciamo il redirect

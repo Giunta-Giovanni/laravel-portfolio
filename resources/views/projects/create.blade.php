@@ -4,7 +4,7 @@
 
 @section('content')
 
-<form action="{{ route('projects.store') }}" method="POST" class="container mt-4 p-4 border rounded shadow-sm bg-light">
+<form action="{{ route('projects.store') }}" method="POST" enctype="multipart/form-data"   class="container mt-4 p-4 border rounded shadow-sm bg-light" >
     {{-- token di protezione che identifica che la chiamata post avvenga tramite un form del sito stesso --}}
     @csrf
 
@@ -18,6 +18,12 @@
     <div class="mb-3">
         <label for="client" class="form-label">Cliente</label>
         <input type="text" name="client" id="client" class="form-control" required>
+    </div>
+
+    {{-- inserimento di un file --}}
+    <div class="mb-3">
+        <label for="file" class="form-label">Inserisci l'immagine di copertina</label>
+        <input type="file" name="image" id="file" class="form-control">
     </div>
 
     {{-- start date --}}
@@ -40,7 +46,6 @@
             <option value="in_progress">In Corso</option>
         </select>
     </div>
-    @dump($types)
     
 
     {{-- tipo di progetto --}}
@@ -54,7 +59,6 @@
     </div>
 
     {{-- tecnologie usate --}}
-   {{-- tecnologie usate --}}
 <div class="mb-3 form-control">
     <div class="row">
         @foreach ($technologies as $technology)

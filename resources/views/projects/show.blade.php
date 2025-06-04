@@ -1,10 +1,15 @@
 @extends('layouts.projects')
-
+@section('title', "Project $project->id")
 @section('content')
 <div class="container pt-5">
-
+@if ($project->image)
+    <div class="">
+    <img src="{{asset('storage/'.$project->image)}}" alt="">
+</div>
+@endif
 
     <div class="card shadow-sm p-4 mb-4 ">
+        
         
         <h1 class="mb-3 text-primary">{{ $project->title }}</h1>
         <p class="text-muted">tipo di progetto: {{ $project->type->name }}</p>

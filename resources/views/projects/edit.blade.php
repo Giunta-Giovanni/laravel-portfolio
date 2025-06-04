@@ -4,7 +4,7 @@
 
 @section('content')
 
-<form action="{{ route('projects.update', $project) }}" method="POST" class="container mt-4 p-4 border rounded shadow-sm bg-light">
+<form action="{{ route('projects.update', $project) }}" method="POST" enctype="multipart/form-data"  class="container mt-4 p-4 border rounded shadow-sm bg-light">
     {{-- token di protezione che identifica che la chiamata post avvenga tramite un form del sito stesso --}}
     @csrf
 
@@ -21,6 +21,16 @@
     <div class="mb-3">
         <label for="client" class="form-label">Cliente</label>
         <input type="text" name="client" id="client" class="form-control"value={{$project->client}}  required>
+    </div>
+
+    {{-- inserimento di un file --}}
+    <div class="mb-3">
+        <label for="file" class="form-label">Inserisci l'immagine di copertina</label>
+        <input type="file" name="image" id="file" class="form-control">
+                @if ($project->image)
+                
+            <img src="{{asset('storage/'.$project->image)}}" class="w-25" alt="">
+        @endif
     </div>
 
     {{-- start date --}}
